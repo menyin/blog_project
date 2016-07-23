@@ -6,15 +6,15 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var partials = require('express-partials');
 var routes = require('./routes/index');
-
-
 var app = express();
+var connect=require("connect");
+//var MongoStore = require('connect-mongo')(connect);
+var settings = require('./settings');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(partials());
-
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//页面路由规划
+//页锟斤拷路锟缴规划
 app.get('/', routes.index);
 //app.get('/u/:user', routes.user);
 //app.post('/post', routes.post);
