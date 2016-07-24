@@ -4,5 +4,5 @@
 module.exports={
     cookieSecret:"blog",
     db:"blog",
-    host:"10.188.179.72"
+    host:"192.168.1.121"
 }
