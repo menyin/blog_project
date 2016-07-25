@@ -14,7 +14,9 @@ var settings = require('./settings');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+//app.locals._layoutFile='layout2';//此设置无效
 app.use(partials());
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -50,15 +52,24 @@ app.use(function (req,res,next) {
     }
     next();
 });
+//使用中间件把user设置成动态视图助手
+app.use(function(req, res, next){
+    res.locals.user=req.session.user;
+    //res.locals({
+    //    user:req.session.user
+    //})
+    next();
+})
 //ҳ��·�ɹ滮
 app.get('/', routes.index);
+app.get('/index', routes.index);
 app.get('/u/:user', routes.user);
 app.post('/post', routes.post);
 app.get('/reg', routes.reg);
 app.post('/reg', routes.doReg);
 app.get('/login', routes.login);
 app.post('/login', routes.doLogin);
-app.get('/loginout', routes.loginOut);
+app.get('/loginOut', routes.loginOut);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
