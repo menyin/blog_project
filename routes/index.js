@@ -1,6 +1,7 @@
 var User = require('../models/User');
 var crypto = require('crypto');//NodeJS加密解密模块
 module.exports.index = function (req, res) {
+    console.log('甘妮妮安');
         res.render('index', {title: '首页', layout:'layout'});
 };
 module.exports.reg = function (req, res) {

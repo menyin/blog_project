@@ -28,14 +28,14 @@ var session = require('cookie-session');
 var MongoStore = require('connect-mongo')(connect);
 // 设置 Session
 // 注意此处的session是要额外引入(Express4.x将许多模块踢掉原因)，原项目直接用Express.session(...)
-app.use(session({
-    secret: settings.cookieSecret,
-    store: new MongoStore({
-        host: settings.host,
-        db: settings.db,
-        port: 27017
-    })
-}));
+//app.use(session({
+//    secret: settings.cookieSecret,
+//    store: new MongoStore({
+//        host: settings.host,
+//        db: settings.db,
+//        port: 27017
+//    })
+//}));
 
 app.use(function (req,res,next) {
     var err=req.session.error;
